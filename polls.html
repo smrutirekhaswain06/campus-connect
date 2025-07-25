@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CampusConnect - Polls & Surveys</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #32004d, #6a0572, #c131cf);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 0;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 15px 30px;
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff5ccc;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+
+    .nav-links li a:hover {
+      color: #ffb3f0;
+    }
+
+    .card, .setup-card, .poll-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-top: 100px; /* Adjusts for navbar */
+    }
+
+    .btn, button {
+      background: #c131cf;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover, button:hover {
+      background: #a020f0;
+      transform: scale(1.05);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #000;
+    }
+
+    .option {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vote-count {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .total-votes {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    #setupCard, #pollCard {
+      display: none;
+    }
+
+    .card h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ffccf5;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      width: 100%;
+      margin-top: auto;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 NAVIGATION BAR -->
+  <nav>
+    <div class="nav-content">
+      <span class="logo">CampusConnect</span>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Wall</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Notes</a></li>
+        <li><a href="#">Polls</a></li>
+        <li><a href="#">Notices</a></li>
+        <li><a href="#">Profiles</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 🔹 Landing Page -->
+  <div class="card" id="featureCard">
+    <h1>📋 Polls & Surveys</h1>
+    <h2>Curious about what students think?</h2>
+    <p>Create polls, get feedback, and view live results!</p>
+    <button class="btn" onclick="showSetup()">🗳 Launch a Poll</button>
+  </div>
+
+  <!-- 🔹 Poll Setup -->
+  <div class="setup-card" id="setupCard">
+    <h2>📢 Create Your Poll</h2>
+    <input type="text" id="creatorName" placeholder="Your name (Poll creator)" />
+    <input type="text" id="pollInput" placeholder="E.g., What event should we plan?" />
+    <div id="optionInputs">
+      <input type="text" class="optionText" placeholder="Option 1" />
+      <input type="text" class="optionText" placeholder="Option 2" />
+    </div>
+    <button onclick="addOption()">➕ Add Option</button>
+    <button onclick="startPoll()">✅ Start Poll</button>
+  </div>
+
+  <!-- 🔹 Voting Section -->
+  <div class="poll-card" id="pollCard">
+    <h2 id="pollTitle">📊 Your Poll</h2>
+    <p id="pollCreator" style="margin-bottom: 1rem; font-style: italic; color: #ccc;"></p>
+    <input type="text" id="voterName" placeholder="Enter your name to vote" />
+    <div id="optionsArea"></div>
+    <div class="total-votes">Total Votes: <span id="totalVotes">0</span></div>
+  </div>
+
+  <!-- 🔹 FOOTER -->
+  <footer>
+    © 2025 CampusConnect. All rights reserved.
+  </footer>
+
+  <!-- 🔹 SCRIPT -->
+  <script>
+    let options = [];
+    let votes = [];
+    let votedNames = [];
+
+    function showSetup() {
+      document.getElementById("featureCard").style.display = "none";
+      document.getElementById("setupCard").style.display = "block";
+    }
+
+    function addOption() {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'optionText';
+      input.placeholder = `Option ${document.querySelectorAll('.optionText').length + 1}`;
+      document.getElementById('optionInputs').appendChild(input);
+    }
+
+    function startPoll() {
+      const question = document.getElementById('pollInput').value.trim();
+      const creator = document.getElementById('creatorName').value.trim();
+      const optionInputs = document.querySelectorAll('.optionText');
+
+      options = [];
+      votes = [];
+      votedNames = [];
+
+      optionInputs.forEach(input => {
+        const value = input.value.trim();
+        if (value !== '') {
+          options.push(value);
+          votes.push(0);
+        }
+      });
+
+      if (question === '' || creator === '' || options.length < 2) {
+        alert("Please enter your name, question, and at least 2 options.");
+        return;
+      }
+
+      document.getElementById('setupCard').style.display = 'none';
+      document.getElementById('pollCard').style.display = 'block';
+
+      document.getElementById('pollTitle').textContent = `📊 ${question}`;
+      document.getElementById('pollCreator').textContent = `👤 Created by: ${creator}`;
+      renderOptions();
+    }
+
+    function renderOptions() {
+      const optionsArea = document.getElementById('optionsArea');
+      optionsArea.innerHTML = '';
+      options.forEach((opt, index) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerHTML = `
+          <span>${opt}</span>
+          <div>
+            <button onclick="vote(${index})">Vote</button>
+            <span class="vote-count" id="count${index}">0</span>
+          </div>
+        `;
+        optionsArea.appendChild(div);
+      });
+      document.getElementById('totalVotes').textContent = '0';
+    }
+
+    function vote(index) {
+      const name = document.getElementById('voterName').value.trim();
+      if (name === '') {
+        alert("Please enter your name to vote.");
+        return;
+      }
+
+      if (votedNames.includes(name.toLowerCase())) {
+        alert("⚠ You have already voted!");
+        return;
+      }
+
+      votes[index]++;
+      votedNames.push(name.toLowerCase());
+
+      document.getElementById("count" + index).textContent = votes[index];
+      const total = votes.reduce((a, b) => a + b, 0);
+      document.getElementById("totalVotes").textContent = total;
+
+      document.getElementById('voterName').value = "";
+    }
+  </script>
+</body>
+</html>
