@@ -7,14 +7,14 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #330052, #5f0a87);
-      color: #fff;
-    }
+      body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #1b0036, #000000); /* Matching clubs page */
+  color: #fff;
+}
 
-    nav {
+nav {
   background-color: rgba(255, 255, 255, 0.08);
   padding: 15px 30px;
   backdrop-filter: blur(10px);
@@ -32,7 +32,7 @@
 .logo {
   font-size: 24px;
   font-weight: bold;
-  color: #ff5ccc;
+  color: #ff66cc;
 }
 
 .nav-links {
@@ -43,137 +43,147 @@
   padding: 0;
 }
 
-.nav-links li a {
+.nav-links li a,
+.nav-links a {
   color: #fff;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.2s;
 }
 
-.nav-links li a:hover {
-  color: #ffb3f0;
+.nav-links li a:hover,
+.nav-links a:hover {
+  color: #ffccf5;
 }
 
-    h2.section-title {
-      margin: 30px 0 10px;
-      text-align: center;
-      font-size: 28px;
-      color: #ffccf5;
-      text-shadow: 0 0 4px #b84aff;
-    }
+h2.section-title {
+  margin: 30px 0 10px;
+  text-align: center;
+  font-size: 28px;
+  color: #ffccf5;
+  text-shadow: 0 0 4px #b84aff;
+}
 
-    h2.section-title.faculty,
-    h2.section-title.student {
-      text-shadow: none;
-    }
+h2.section-title.faculty,
+h2.section-title.student {
+  text-shadow: none;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .profile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
 
-    .profile-card {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
-      display: flex;
-      gap: 20px;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
+.profile-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 5px solid #c131cf;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 
-    .profile-pic {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #ff5ccc;
-    }
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff66cc;
+}
 
-    .profile-info h3 {
-      margin: 5px 0;
-    }
+.profile-info h3 {
+  margin: 5px 0;
+  color: #ffccf5;
+}
 
-    .profile-info p {
-      margin: 2px 0;
-      color: #ccc;
-      font-size: 14px;
-    }
+.profile-info p {
+  margin: 2px 0;
+  color: #ccc;
+  font-size: 14px;
+}
 
-    .edit-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background-color: #ff5ccc;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      cursor: pointer;
-    }
+.edit-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #c131cf;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: white;
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-    }
+.edit-btn:hover {
+  background-color: #a020f0;
+}
 
-    .modal-content {
-      background: #3c005c;
-      margin: 8% auto;
-      padding: 25px;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 16px;
-      color: #fff;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-    }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
 
-    .modal-content input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-    }
+.modal-content {
+  background: #3c005c;
+  margin: 8% auto;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
 
-    .modal-content button {
-      background-color: #b84aff;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
 
-    .close {
-      color: #ffb3f0;
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
-    }
+.modal-content button {
+  background-color: #b84aff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    label {
-      font-size: 14px;
-      display: block;
-      margin-top: 10px;
-    }
-    footer {
+.close {
+  color: #ffb3f0;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+}
+
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,6 +195,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
+
   </style>
 </head>
 <body>
@@ -193,13 +204,14 @@
   <div class="nav-content">
     <span class="logo">CampusConnect</span>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Wall</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Notes</a></li>
-      <li><a href="#">Polls</a></li>
-      <li><a href="#">Notices</a></li>
-      <li><a href="#">Profiles</a></li>
+       <a href="home.html">Home</a>
+      <a href="wall.html">Wall</a>
+      <a href="events.html">Events</a>
+      <a href="notes.html">Notes</a>
+      <a href="polls.html">Polls</a>
+      <a href="notices.html">Notices</a>
+      <a href="profiles.html">Profiles</a>
+      <a href="club.html">Clubs</a>
     </ul>
   </div>
 </nav>
