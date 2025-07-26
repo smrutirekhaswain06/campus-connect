@@ -14,5 +14,5 @@ It includes pages like Wall, Clubs, Marketplace, notices, Events, Polls, Profile
 - 🗳 Poll - [polls.html](https://smrutirekhaswain06.github.io/campus-connect/polls.html)
 - 👤 Profile - [profiles.html](https://smrutirekhaswain06.github.io/campus-connect/profiles.html)
 - 🎪 Events -	[events.html](https://smrutirekhaswain06.github.io/campus-connect/events.html)
-- ❓ Q&A -	[CollegeQ.html](https://smrutirekhaswain06.github.io/campus-connect/CollegeQ.html)
+- ❓ Q&A -	[CollegeQ.html](https://smrutirekhaswain06.github.io/campus-connect/collegeQ.html)
 - 🧳 Lost & Found - [lost.html](https://smrutirekhaswain06.github.io/campus-connect/lost.html)
