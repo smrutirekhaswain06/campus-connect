@@ -1,260 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>CollegeQ - CampusConnect Q&A</title>
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  <meta charset="UTF-8" />
+  <title>CollegeQ - CampusConnect Q&A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #c131cf, #000000);
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px; /* navbar height */
-    padding-bottom: 50px; /* footer height */
-    color: #1a1a1a;
-  }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to right, #1b0036, #000000);
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      padding-bottom: 50px;
+      color: #1a1a1a;
+    }
 
-  /* Navbar */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(255 255 255 / 0.15);
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 1.1px;
-    z-index: 1000;
-  }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+      z-index: 1000;
+    }
 
-  nav .logo {
-    font-size: 1.5rem;
-    user-select: none;
-  }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff66cc;
+    }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-  nav ul li a {
-    color: #eee;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
 
-  nav ul li a:hover {
-    color: #ffd6ff;
-  }
+    nav ul li a:hover {
+      color: #ffccf5;
+    }
 
-  /* Container */
-  .container {
-    background: rgba(255 255 255 / 0.85);
-    max-width: 600px;
-    margin: auto;
-    padding: 30px 25px;
-    border-radius: 20px;
-    color: #1a1a1a;
-    text-align: center;
-  }
+    .container {
+      background: rgba(255, 255, 255, 0.06);
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 25px;
+      border-radius: 20px;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(255, 0, 255, 0.08);
+    }
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffccf5;
+    }
 
-  /* Search Bar */
-  .search-bar {
-    margin-bottom: 25px;
-  }
+    .search-bar {
+      margin-bottom: 25px;
+    }
 
-  .search-bar input {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: 1.5px solid #ccc;
-    transition: border-color 0.3s ease;
-  }
+    .search-bar input {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1.5px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
 
-  .search-bar input:focus {
-    outline: none;
-    border-color: #c131cf;
-    box-shadow: 0 0 8px #c131cfaa;
-  }
+    .search-bar input:focus {
+      outline: none;
+      border-color: #c131cf;
+      box-shadow: 0 0 8px #c131cfaa;
+    }
 
-  /* QCard */
-  .qcard {
-    background: white;
-    border-radius: 14px;
-    padding: 18px 22px;
-    margin-bottom: 18px;
-    color: #1a1a1a;
-    text-align: left;
-    cursor: default;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
+    .qcard {
+      background: white;
+      border-left: 5px solid #c131cf;
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      color: #1a1a1a;
+      text-align: left;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    }
 
-  .qcard h3 {
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-    color: #c131cf;
-  }
+    .qcard h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #c131cf;
+    }
 
-  .qcard p {
-    font-size: 1rem;
-    line-height: 1.3;
-    color: #333;
-    margin-bottom: 12px;
-  }
+    .qcard p {
+      font-size: 1rem;
+      color: #333;
+    }
 
-  .view-details {
-    display: inline-block;
-    color: #c131cf;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-  }
+    .view-details {
+      display: inline-block;
+      color: #c131cf;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
 
-  .view-details:hover {
-    color: #de4de0;
-  }
+    .view-details:hover {
+      color: #de4de0;
+    }
 
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* Form */
-  form {
-    margin-top: 30px;
-    text-align: left;
-  }
+    form {
+      margin-top: 30px;
+      text-align: left;
+    }
 
-  form input, form textarea, form button {
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1.5px solid #ccc;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease;
-  }
+    form input,
+    form textarea,
+    form button {
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #ccc;
+      margin-bottom: 15px;
+      transition: border-color 0.3s ease;
+    }
 
-  form input:focus, form textarea:focus {
-    outline: none;
-    border-color: #c131cf;
-    box-shadow: 0 0 8px #c131cfaa;
-  }
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #c131cf;
+      box-shadow: 0 0 8px #c131cfaa;
+    }
 
-  form textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
 
-  form button {
-    background: linear-gradient(90deg, #c131cf, #000000);
-    color: white;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
+    form button {
+      background: linear-gradient(to right, #c131cf, #a020f0);
+      color: white;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
 
-  form button:hover {
-    background: linear-gradient(90deg, #de4de0, #2b0a2b);
-  }
+    form button:hover {
+      background: linear-gradient(to right, #de4de0, #5c007a);
+    }
 
-  /* No results message */
-  .no-results {
-    text-align: center;
-    color: #c131cf;
-    font-weight: 600;
-    margin-top: 20px;
-  }
+    .no-results {
+      text-align: center;
+      color: #c131cf;
+      font-weight: 600;
+      margin-top: 20px;
+    }
 
-  /* Modal */
-  .modal-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1500;
-  }
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1500;
+    }
 
-  .modal-content {
-    background: rgba(255 255 255 / 0.9);
-    padding: 25px 30px;
-    border-radius: 20px;
-    max-width: 500px;
-    color: #1a1a1a;
-    text-align: left;
-    position: relative;
-  }
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      color: #1a1a1a;
+      text-align: left;
+      position: relative;
+    }
 
-  .modal-content h3 {
-    color: #c131cf;
-    margin-bottom: 15px;
-  }
+    .modal-content h3 {
+      color: #c131cf;
+      margin-bottom: 15px;
+    }
 
-  .modal-content p {
-    font-size: 1rem;
-    line-height: 1.4;
-    margin-bottom: 20px;
-  }
+    .modal-content p {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
 
-  .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    font-size: 1.5rem;
-    color: #c131cf;
-    cursor: pointer;
-    font-weight: 700;
-    user-select: none;
-  }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #c131cf;
+      cursor: pointer;
+      font-weight: 700;
+      user-select: none;
+    }
 
-  .modal-close:hover {
-    color: #de4de0;
-  }
+    .modal-close:hover {
+      color: #de4de0;
+    }
 
-  /* Footer */
-  footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background: rgba(255 255 255 / 0.15);
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #eee;
-    font-size: 0.9rem;
-    user-select: none;
-    letter-spacing: 0.9px;
-  }
-</style>
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffccf5;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -270,6 +264,8 @@
     <li><a href="profiles.html">Profiles</a></li>
     <li><a href="club.html">Clubs</a></li>
     <li><a href="collegeQ.html">Q&A</a></li>
+    <li><a href="marketplace.html">Marketplace</a></li>
+    <li><a href="lost.html">Lost & Found</a></li>
   </ul>
 </nav>
 
@@ -314,7 +310,6 @@
   const searchInput = document.getElementById('searchInput');
   const qaForm = document.getElementById('qaForm');
 
-  // Initial questions array
   let questions = [
     {
       question: "How to prepare for coding interviews?",
@@ -330,7 +325,6 @@
     }
   ];
 
-  // Display questions with fade-in animation
   function displayQuestions(list) {
     questionsList.innerHTML = '';
     if(list.length === 0) {
@@ -350,7 +344,6 @@
     });
   }
 
-  // Modal open on clicking View Details
   questionsList.addEventListener('click', e => {
     if(e.target.classList.contains('view-details')) {
       const idx = e.target.getAttribute('data-index');
@@ -370,14 +363,12 @@
     }
   });
 
-  // Search functionality
   searchInput.addEventListener('input', () => {
     const term = searchInput.value.toLowerCase();
     const filtered = questions.filter(q => q.question.toLowerCase().includes(term) || q.answer.toLowerCase().includes(term));
     displayQuestions(filtered);
   });
 
-  // Add new Q&A
   qaForm.addEventListener('submit', e => {
     e.preventDefault();
     const newQ = document.getElementById('newQuestion').value.trim();
@@ -388,12 +379,12 @@
     questions.unshift({ question: newQ, answer: newA });
     displayQuestions(questions);
     qaForm.reset();
-    searchInput.value = ''; // reset search
+    searchInput.value = '';
   });
 
-  // Initial display
   displayQuestions(questions);
 </script>
 
 </body>
 </html>
+

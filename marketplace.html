@@ -13,35 +13,32 @@
 
   body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #c131cf, #000000);
+    background: linear-gradient(to right, #1b0036, #000000);
     display: flex;
     flex-direction: column;
-    padding-top: 60px; /* navbar height */
-    padding-bottom: 50px; /* footer height */
+    padding-top: 60px;
+    padding-bottom: 50px;
     color: #1a1a1a;
   }
 
-  /* Navbar */
   nav {
     position: fixed;
     top: 0;
     width: 100%;
     height: 60px;
-    background: rgba(255 255 255 / 0.15);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 25px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 1.1px;
     z-index: 1000;
   }
 
   nav .logo {
     font-size: 1.5rem;
-    user-select: none;
+    font-weight: bold;
+    color: #ff66cc;
   }
 
   nav ul {
@@ -51,24 +48,24 @@
   }
 
   nav ul li a {
-    color: #eee;
+    color: #fff;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
   }
 
   nav ul li a:hover {
-    color: #ffd6ff;
+    color: #ffccf5;
   }
 
-  /* Container */
   .container {
-    background: rgba(255 255 255 / 0.85);
+    background: rgba(255, 255, 255, 0.06);
     max-width: 960px;
     margin: auto;
     padding: 30px 25px;
     border-radius: 20px;
-    color: #1a1a1a;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255, 0, 255, 0.08);
   }
 
   h2 {
@@ -76,9 +73,9 @@
     margin-bottom: 20px;
     font-weight: 700;
     text-align: center;
+    color: #ffccf5;
   }
 
-  /* Search Bar */
   .search-bar {
     margin-bottom: 25px;
     max-width: 400px;
@@ -101,7 +98,6 @@
     box-shadow: 0 0 8px #c131cfaa;
   }
 
-  /* Products Grid */
   #productsList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -115,6 +111,7 @@
     text-align: center;
     cursor: default;
     transition: transform 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   }
 
   .product-card:hover {
@@ -149,7 +146,6 @@
     color: #2b0a2b;
   }
 
-  /* Add Product Form */
   form {
     margin-top: 40px;
     max-width: 500px;
@@ -164,7 +160,9 @@
     font-weight: 700;
   }
 
-  form input, form textarea, form button {
+  form input,
+  form textarea,
+  form button {
     width: 100%;
     font-size: 1rem;
     padding: 10px 14px;
@@ -174,7 +172,8 @@
     transition: border-color 0.3s ease;
   }
 
-  form input:focus, form textarea:focus {
+  form input:focus,
+  form textarea:focus {
     outline: none;
     border-color: #c131cf;
     box-shadow: 0 0 8px #c131cfaa;
@@ -186,19 +185,17 @@
   }
 
   form button {
-    background: linear-gradient(90deg, #c131cf, #000000);
+    background: linear-gradient(to right, #c131cf, #a020f0);
     color: white;
     font-weight: 700;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease;
   }
 
   form button:hover {
-    background: linear-gradient(90deg, #de4de0, #2b0a2b);
+    background: linear-gradient(to right, #de4de0, #5c007a);
   }
 
-  /* No products message */
   .no-products {
     text-align: center;
     color: #c131cf;
@@ -206,21 +203,18 @@
     margin-top: 20px;
   }
 
-  /* Footer */
   footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 50px;
-    background: rgba(255 255 255 / 0.15);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #eee;
+    color: #ffccf5;
     font-size: 0.9rem;
-    user-select: none;
-    letter-spacing: 0.9px;
   }
 </style>
 </head>
@@ -237,6 +231,9 @@
     <li><a href="notices.html">Notices</a></li>
     <li><a href="profiles.html">Profiles</a></li>
     <li><a href="club.html">Clubs</a></li>
+    <li><a href="collegeQ.html">Q&A</a></li>
+    <li><a href="marketplace.html">Marketplace</a></li>
+    <li><a href="lost.html">Lost & Found</a></li>
   </ul>
 </nav>
 
@@ -270,30 +267,27 @@
   const searchInput = document.getElementById('searchInput');
   const productForm = document.getElementById('productForm');
 
-  // Sample initial products
   let products = [
-  {
-    image: "wire.jpg",
-    name: "Wireless Headphones",
-    desc: "High-quality sound with noise cancellation.",
-    price: 59.99
-  },
-  {
-    image: "backpack.jpg",
-    name: "Classic Backpack",
-    desc: "Durable and spacious for daily use.",
-    price: 39.49
-  },
-  {
-    image: "watch.jpg",
-    name: "Smartwatch",
-    desc: "Track your fitness and notifications.",
-    price: 89.95
-  }
-];
+    {
+      image: "wire.jpg",
+      name: "Wireless Headphones",
+      desc: "High-quality sound with noise cancellation.",
+      price: 59.99
+    },
+    {
+      image: "backpack.jpg",
+      name: "Classic Backpack",
+      desc: "Durable and spacious for daily use.",
+      price: 39.49
+    },
+    {
+      image: "watch.jpg",
+      name: "Smartwatch",
+      desc: "Track your fitness and notifications.",
+      price: 89.95
+    }
+  ];
 
-
-  // Render product cards
   function displayProducts(list) {
     productsList.innerHTML = '';
     if(list.length === 0) {
@@ -314,7 +308,6 @@
     });
   }
 
-  // Search filter
   searchInput.addEventListener('input', () => {
     const term = searchInput.value.toLowerCase();
     const filtered = products.filter(p =>
@@ -323,7 +316,6 @@
     displayProducts(filtered);
   });
 
-  // Add new product
   productForm.addEventListener('submit', e => {
     e.preventDefault();
     const image = document.getElementById('productImage').value.trim();
@@ -336,10 +328,9 @@
     products.unshift({ image, name, desc, price });
     displayProducts(products);
     productForm.reset();
-    searchInput.value = ''; // clear search input after add
+    searchInput.value = '';
   });
 
-  // Initial display
   displayProducts(products);
 </script>
 
